@@ -1,14 +1,12 @@
 package DaoMySQL;
 
-import DTO.TipoDocumento;
+import Entidades.TipoIdentificacion;
 import Util.Conexion;
 import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TipoDocumentoDao implements Serializable {
 
@@ -19,14 +17,18 @@ public class TipoDocumentoDao implements Serializable {
     }
 
 //    @Override
-    public ArrayList<TipoDocumento> cargarTiposDocumento() {
-        ArrayList<TipoDocumento> tipos = new ArrayList<TipoDocumento>();
-        String consulta = "SELECT * FROM TipoIdentificacion";
+    public ArrayList<TipoIdentificacion> cargarTiposDocumento() {
+        ArrayList<TipoIdentificacion> tipos = new ArrayList<TipoIdentificacion>();
+        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();
+            TipoIdentificacion t;
             while (rs.next()) {
-                TipoDocumento t = new TipoDocumento(rs.getInt("id"), rs.getString("descripcion"));
+                t = new TipoIdentificacion();
+                t.setId(rs.getInt(1));
+                t.setDescripcion(rs.getString(2));
+                t.setFecha(rs.getDate(3));
                 tipos.add(t);
             }
             rs.close();
@@ -40,50 +42,6 @@ public class TipoDocumentoDao implements Serializable {
         return tipos;
     }
 
-//    @Override
-    public TipoDocumento dtoTipoDocumento(int idDocumento) {
-        TipoDocumento tipo=null;
-        String consulta= "SELECT * FROM TipoDocumento where idTipoDocumento =?";
-        try {
-            PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
-            stmt.setInt(1, idDocumento);
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                tipo = new TipoDocumento(rs.getInt("id"),rs.getString("descripcion"));
-            }
-            rs.close();
-            stmt.close();
-            this.conexion.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-       
-        return tipo;
-    }
-    
-    
-//    public TipoDocumento buscarDocumento(int tipo) {
-//        TipoDocumento t= null;
-//        String consulta= "SELECT idTipoDocumento, nombre "
-//                + "FROM TipoDocumento "
-//                + "WHERE idTipoDocumento=?";
-//        try {
-//            PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
-//            stmt.setInt(1, tipo);
-//            ResultSet rs = stmt.executeQuery();
-//            while(rs.next()){
-//                t = new TipoDocumento(rs.getInt(1),rs.getString(2));
-//            }
-//            rs.close();
-//            stmt.close();
-//            this.conexion.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//        return t;
-//    }
-//    
     public boolean registrarDocumento(String nombre) {
         String consulta = "INSERT INTO TipoIdentificacion (descripcion) VALUES(?)";
         try {
@@ -99,25 +57,6 @@ public class TipoDocumentoDao implements Serializable {
         }
         return false;
     }
-//
-//    @Override
-//    public boolean documentoEditar(int idTipo, String nombre) {
-//        String consulta = "update TipoDocumento set nombre=? where idTipoDocumento=? ";
-//        boolean b = true;
-//        try{
-//            PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
-//            stmt.setString(1,nombre);
-//            stmt.setInt(2, idTipo);
-//            b = stmt.execute();
-//            stmt.close();
-//            this.conexion.close();
-//        }catch(SQLException ex){
-//            ex.printStackTrace();
-//        }
-//        return b;
-//    }
-//    
-//
 
     public boolean eliminar(String doc) {
         String consulta = "DELETE FROM TipoIdentificacion where id=?";

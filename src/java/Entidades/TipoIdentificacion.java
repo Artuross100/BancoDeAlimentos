@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Entidades;
 
 import java.io.Serializable;
@@ -23,10 +17,6 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Estudiante
- */
 @Entity
 @Table(catalog = "ufps_87", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"descripcion"})})
