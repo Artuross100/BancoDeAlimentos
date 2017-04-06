@@ -25,6 +25,9 @@ public class CondicionSocialDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -32,7 +35,7 @@ public class CondicionSocialDao implements Serializable{
         return false;
     }
     
-     public ArrayList<CondicionSocial> cargarTiposDocumento() {
+     public ArrayList<CondicionSocial> cargar() {
         ArrayList<CondicionSocial> tipos = new ArrayList<CondicionSocial>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

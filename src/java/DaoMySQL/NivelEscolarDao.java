@@ -25,6 +25,9 @@ public class NivelEscolarDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -32,7 +35,7 @@ public class NivelEscolarDao implements Serializable{
         return false;
     }
     
-    public ArrayList<NivelEscolar> cargarTiposDocumento() {
+    public ArrayList<NivelEscolar> cargar() {
         ArrayList<NivelEscolar> tipos = new ArrayList<NivelEscolar>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

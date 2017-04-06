@@ -25,6 +25,9 @@ public class CondicionFisicaDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -32,7 +35,7 @@ public class CondicionFisicaDao implements Serializable{
         return false;
     }
     
-    public ArrayList<CondicionFisica> cargarTiposDocumento() {
+    public ArrayList<CondicionFisica> cargar() {
         ArrayList<CondicionFisica> tipos = new ArrayList<CondicionFisica>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

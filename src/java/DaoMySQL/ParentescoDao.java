@@ -25,6 +25,9 @@ public class ParentescoDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -32,7 +35,7 @@ public class ParentescoDao implements Serializable{
         return false;
     }
     
-    public ArrayList<Parentesco> cargarTiposDocumento() {
+    public ArrayList<Parentesco> cargar() {
         ArrayList<Parentesco> tipos = new ArrayList<Parentesco>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

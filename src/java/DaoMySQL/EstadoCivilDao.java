@@ -26,6 +26,9 @@ public class EstadoCivilDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -33,7 +36,7 @@ public class EstadoCivilDao implements Serializable{
         return false;
     }
     
-    public ArrayList<EstadoCivil> cargarTiposDocumento() {
+    public ArrayList<EstadoCivil> cargar() {
         ArrayList<EstadoCivil> tipos = new ArrayList<EstadoCivil>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

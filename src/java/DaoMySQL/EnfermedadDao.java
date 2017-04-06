@@ -25,6 +25,9 @@ public class EnfermedadDao implements Serializable{
             System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
@@ -32,7 +35,7 @@ public class EnfermedadDao implements Serializable{
         return false;
     }
     
-    public ArrayList<Enfermedad> cargarTiposDocumento() {
+    public ArrayList<Enfermedad> cargar() {
         ArrayList<Enfermedad> tipos = new ArrayList<Enfermedad>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {

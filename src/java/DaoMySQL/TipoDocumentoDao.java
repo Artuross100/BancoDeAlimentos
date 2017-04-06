@@ -17,7 +17,7 @@ public class TipoDocumentoDao implements Serializable {
     }
 
 //    @Override
-    public ArrayList<TipoIdentificacion> cargarTiposDocumento() {
+    public ArrayList<TipoIdentificacion> cargar() {
         ArrayList<TipoIdentificacion> tipos = new ArrayList<TipoIdentificacion>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
         try {
@@ -48,9 +48,11 @@ public class TipoDocumentoDao implements Serializable {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             stmt.setString(1, nombre);
             int x = stmt.executeUpdate();
-            System.out.println("Operacion: " + x);
             stmt.close();
             this.conexion.close();
+            if(x==1){
+                return true;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
