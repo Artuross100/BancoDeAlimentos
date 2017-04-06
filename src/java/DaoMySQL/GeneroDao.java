@@ -37,7 +37,7 @@ public class GeneroDao implements Serializable{
     
     public ArrayList<Genero> cargar() {
         ArrayList<Genero> tipos = new ArrayList<Genero>();
-        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
+        String consulta = "SELECT id, descripcion, fecha FROM Genero";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();

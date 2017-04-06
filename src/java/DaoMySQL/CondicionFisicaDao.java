@@ -37,7 +37,7 @@ public class CondicionFisicaDao implements Serializable{
     
     public ArrayList<CondicionFisica> cargar() {
         ArrayList<CondicionFisica> tipos = new ArrayList<CondicionFisica>();
-        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
+        String consulta = "SELECT id, descripcion, fecha FROM CondicionFisica";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();

@@ -37,7 +37,7 @@ public class EstadoMujerDao implements Serializable{
     
     public ArrayList<EstadoMujer> cargar() {
         ArrayList<EstadoMujer> tipos = new ArrayList<EstadoMujer>();
-        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
+        String consulta = "SELECT id, descripcion, fecha FROM EstadoMujer";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();

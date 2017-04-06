@@ -16,7 +16,6 @@ public class TipoDocumentoDao implements Serializable {
         this.conexion = new Conexion();
     }
 
-//    @Override
     public ArrayList<TipoIdentificacion> cargar() {
         ArrayList<TipoIdentificacion> tipos = new ArrayList<TipoIdentificacion>();
         String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
@@ -80,13 +79,4 @@ public class TipoDocumentoDao implements Serializable {
         }
     }
 
-    public static void main(String args[]) {
-        try {
-            TipoDocumentoDao t = new TipoDocumentoDao();
-            t.eliminar("2");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.out.println("Hubo un error en el main");
-        }
-    }
 }

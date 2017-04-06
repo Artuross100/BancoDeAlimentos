@@ -37,7 +37,7 @@ public class ParentescoDao implements Serializable{
     
     public ArrayList<Parentesco> cargar() {
         ArrayList<Parentesco> tipos = new ArrayList<Parentesco>();
-        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
+        String consulta = "SELECT id, descripcion, fecha FROM Parentesco";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();

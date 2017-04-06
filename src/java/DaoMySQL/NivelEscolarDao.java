@@ -37,7 +37,7 @@ public class NivelEscolarDao implements Serializable{
     
     public ArrayList<NivelEscolar> cargar() {
         ArrayList<NivelEscolar> tipos = new ArrayList<NivelEscolar>();
-        String consulta = "SELECT id, descripcion, fecha FROM TipoIdentificacion";
+        String consulta = "SELECT id, descripcion, fecha FROM NivelEscolar";
         try {
             PreparedStatement stmt = this.conexion.getConexion().prepareStatement(consulta);
             ResultSet rs = stmt.executeQuery();
