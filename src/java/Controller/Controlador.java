@@ -1,4 +1,4 @@
-package Contoller;
+package Controller;
 
 import Entidades.CondicionFisica;
 import Entidades.CondicionSocial;

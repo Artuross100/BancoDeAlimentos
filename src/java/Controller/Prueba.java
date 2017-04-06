@@ -1,4 +1,4 @@
-package Contoller;
+package Controller;
 
 import Entidades.CondicionFisica;
 import java.util.ArrayList;
