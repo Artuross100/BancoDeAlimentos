@@ -1,50 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Estudiante
- */
-@Entity
-@Table(catalog = "ufps_87", schema = "")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TipoVivienda.findAll", query = "SELECT t FROM TipoVivienda t"),
-    @NamedQuery(name = "TipoVivienda.findById", query = "SELECT t FROM TipoVivienda t WHERE t.id = :id"),
-    @NamedQuery(name = "TipoVivienda.findByDescripcion", query = "SELECT t FROM TipoVivienda t WHERE t.descripcion = :descripcion"),
-    @NamedQuery(name = "TipoVivienda.findByFecha", query = "SELECT t FROM TipoVivienda t WHERE t.fecha = :fecha")})
 public class TipoVivienda implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(nullable = false)
     private Integer id;
-    @Size(max = 255)
-    @Column(length = 255)
     private String descripcion;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
     public TipoVivienda() {

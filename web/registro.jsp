@@ -1,10 +1,14 @@
+<%@page import="Entidades.Enfermedad"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="controlador" scope="session" class="Controller.Controlador"></jsp:useBean>
 <!DOCTYPE html>
 <html>
     <head>
         <jsp:include flush="true" page="headAdmin.jsp"></jsp:include>
         </head>
         <body>
+            <%ArrayList<Enfermedad> enf = controlador.listarEnfermedad();%>
             <div class="wrapper">
             <jsp:include flush="true" page="menuLateral.jsp"></jsp:include>
                 <div class="main-panel">
@@ -40,10 +44,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Enfermedad 1</td>
-                                                        <td>13 Marzo de 2017</td>
-                                                    </tr>
+                                                    <%if(enf!=null && !enf.isEmpty()){
+                                                        for(Enfermedad e:enf){%>
+                                                        <tr>
+                                                            <td><%=e.getDescripcion()%></td>
+                                                            <td><%=e.getFecha()%></td>
+                                                        </tr>
+                                                        <%}
+                                                    }%>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>

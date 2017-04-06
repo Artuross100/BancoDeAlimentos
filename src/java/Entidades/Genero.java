@@ -8,43 +8,10 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-
-/**
- *
- * @author Estudiante
- */
-@Entity
-@Table(catalog = "ufps_87", schema = "")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Genero.findAll", query = "SELECT g FROM Genero g"),
-    @NamedQuery(name = "Genero.findById", query = "SELECT g FROM Genero g WHERE g.id = :id"),
-    @NamedQuery(name = "Genero.findByDescripcion", query = "SELECT g FROM Genero g WHERE g.descripcion = :descripcion"),
-    @NamedQuery(name = "Genero.findByFecha", query = "SELECT g FROM Genero g WHERE g.fecha = :fecha")})
 public class Genero implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(nullable = false)
     private Integer id;
-    @Size(max = 255)
-    @Column(length = 255)
     private String descripcion;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
     public Genero() {
